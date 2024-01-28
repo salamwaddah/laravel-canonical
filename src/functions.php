@@ -1,17 +1,23 @@
 <?php
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
 
 if (!function_exists('canonical')) {
     function canonical(): string
     {
-        $page = null;
+        $allowed = Config::get('canonical.allowed_params');
+        $build = [];
 
-        if (Request::has('page')) {
-            $page = '?page=' . Request::get('page');
+        foreach ($allowed as $param) {
+            if (Request::has($param)) {
+                $build[$param] = Request::get('page');
+            }
         }
 
-        return URL::current() . $page;
+        $query = http_build_query($build);
+
+        return URL::current() . '?' . $query;
     }
 }

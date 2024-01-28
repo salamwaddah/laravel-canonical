@@ -18,10 +18,14 @@
     ],
     "require": {
         "php": ">=7.3",
+        "illuminate/config": "^8.0|^9.0|^10.0|^11.0",
         "illuminate/http": "^8.0|^9.0|^10.0|^11.0",
         "illuminate/support": "^8.0|^9.0|^10.0|^11.0"
     },
-
+    "require-dev": {
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^2.33"
+    },
     "autoload": {
         "psr-4": {
             "SalamWaddah\\LaravelCanonical\\": "src/"
@@ -35,6 +39,13 @@
             "SalamWaddah\\LaravelCanonical\\Tests\\": "tests/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SalamWaddah\\LaravelCanonical\\CanonicalServiceProvider"
+            ]
+        }
+    },
     "scripts": {
         "test": "vendor/bin/pest"
     },
@@ -45,8 +56,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require-dev": {
-        "pestphp/pest": "^2.33"
-    }
+    "prefer-stable": true
 }
