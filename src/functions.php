@@ -9,6 +9,7 @@ if (!function_exists('canonical')) {
     {
         $allowed = Config::get('canonical.allowed_params');
         $build = [];
+        $query = '';
 
         foreach ($allowed as $param) {
             if (Request::has($param)) {
@@ -16,8 +17,10 @@ if (!function_exists('canonical')) {
             }
         }
 
-        $query = http_build_query($build);
+        if (count($build)) {
+            $query = '?' . http_build_query($build);
+        }
 
-        return URL::current() . '?' . $query;
+        return URL::current() . $query;
     }
 }
