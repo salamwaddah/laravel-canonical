@@ -17,10 +17,11 @@ class CanonicalServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::directive('canonical', function () {
-            $c = canonical();
-            return "<link rel=\"canonical\" href=\"$c\">";
-        });
+        // this will be a nice feature but I need to find out how to avoid blade cache
+        // Blade::directive('canonical', function () {
+        //     $c = canonical();
+        //     return "<link rel=\"canonical\" href=\"$c\">";
+        // });
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
