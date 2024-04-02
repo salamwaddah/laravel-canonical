@@ -13,7 +13,7 @@ if (!function_exists('canonical')) {
 
         foreach ($allowed as $param) {
             if (Request::has($param)) {
-                $build[$param] = Request::get('page');
+                $build[$param] = Request::get($param);
             }
         }
 
