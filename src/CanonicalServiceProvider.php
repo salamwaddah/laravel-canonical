@@ -25,7 +25,7 @@ class CanonicalServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/canonical.php' => config_path('canonical.php'),
-            ], 'config');
+            ], 'laravel-canonical-config');
         }
     }
 }
